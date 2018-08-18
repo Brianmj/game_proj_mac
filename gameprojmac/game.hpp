@@ -32,10 +32,14 @@ private:
 private:
     std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)> window;
     std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> renderer;
+    bool is_running;
     V2 paddle_pos;
     V2 ball_pos;
+    V2 ball_vel;
+    Uint32 ticks_count;
+    int paddle_dir;
     
-    bool is_running;
+    
     
 };
 
