@@ -1,15 +1,15 @@
-//
-//  main.cpp
-//  gameprojmac
-//
-//  Created by Brian Jones on 8/17/18.
-//  Copyright © 2018 Brian Jones. All rights reserved.
-//
+#include "game.hpp"
 
-#include <iostream>
-
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+int main(int argc, char *argv[]) {
+    
+    Game game;
+    
+    bool success = game.initialize();
+    
+    if (success) {
+        game.run_loop();
+    }
+    
+    game.shutdown();
     return 0;
 }

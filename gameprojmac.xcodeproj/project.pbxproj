@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		89BCC5922127C63F004B72A8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89BCC5912127C63F004B72A8 /* main.cpp */; };
+		89BCC59A2127C740004B72A8 /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89BCC5992127C740004B72A8 /* game.cpp */; };
+		89BCC59D2127C7E3004B72A8 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BCC59C2127C7E3004B72A8 /* SDL2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,9 @@
 /* Begin PBXFileReference section */
 		89BCC58E2127C63F004B72A8 /* gameprojmac */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gameprojmac; sourceTree = BUILT_PRODUCTS_DIR; };
 		89BCC5912127C63F004B72A8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		89BCC5982127C723004B72A8 /* game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = game.hpp; sourceTree = "<group>"; };
+		89BCC5992127C740004B72A8 /* game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
+		89BCC59C2127C7E3004B72A8 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89BCC59D2127C7E3004B72A8 /* SDL2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +49,7 @@
 			children = (
 				89BCC5902127C63F004B72A8 /* gameprojmac */,
 				89BCC58F2127C63F004B72A8 /* Products */,
+				89BCC59B2127C7E2004B72A8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,8 +65,18 @@
 			isa = PBXGroup;
 			children = (
 				89BCC5912127C63F004B72A8 /* main.cpp */,
+				89BCC5982127C723004B72A8 /* game.hpp */,
+				89BCC5992127C740004B72A8 /* game.cpp */,
 			);
 			path = gameprojmac;
+			sourceTree = "<group>";
+		};
+		89BCC59B2127C7E2004B72A8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				89BCC59C2127C7E3004B72A8 /* SDL2.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89BCC5922127C63F004B72A8 /* main.cpp in Sources */,
+				89BCC59A2127C740004B72A8 /* game.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +256,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -246,6 +268,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
