@@ -8,6 +8,9 @@
 
 #include "game.hpp"
 
+const int THICKNESS = 15;
+const float PADDLE_HEIGHT = 100.0f;
+
 Game::Game() :
 window(nullptr, SDL_DestroyWindow),
 renderer(nullptr, SDL_DestroyRenderer),
@@ -52,6 +55,9 @@ bool Game::initialize() {
         return false;
     }
     
+    paddle_pos = {10.0f, 768 / 2.f};
+    ball_pos = {1024.0f / 2.0f, 768.0f / 2.f};
+    
     return true;
 }
 
@@ -79,6 +85,8 @@ void Game::process_input() {
         
     }
     
+    // passing nullptr to SDL_GetkeyboardState returns an array of scan keys to test
+    // if that key was pressed (it's true if it was pressed)
     const Uint8 *scan_keys = SDL_GetKeyboardState(nullptr);
     
     if (scan_keys[SDL_SCANCODE_ESCAPE])
@@ -92,6 +100,38 @@ void Game::update_game() {
 void Game::generate_output() {
     SDL_SetRenderDrawColor(renderer.get(), 0, 170, 255, 255);
     SDL_RenderClear(renderer.get());
+    
+    SDL_SetRenderDrawColor(renderer.get(), 255, 255, 255, 255);
+    
+    SDL_Rect wall {0, 0, 1024, THICKNESS};
+    SDL_RenderFillRect(renderer.get(), &wall);  // top wall
+    
+    wall.y = 768 - THICKNESS;
+    SDL_RenderFillRect(renderer.get(), &wall);  // bottom wall
+    
+    wall.x = 1024 - THICKNESS;
+    wall.y = 0;
+    wall.w = THICKNESS;
+    wall.h = 768;
+    SDL_RenderFillRect(renderer.get(), &wall);  // right wall
+    
+    SDL_Rect ball { ((int)ball_pos.x) - (THICKNESS / 2),
+        ((int)ball_pos.y) - (THICKNESS / 2),
+        THICKNESS, THICKNESS
+    };
+    
+    SDL_RenderFillRect(renderer.get(), &ball);      // draw the ball
+    
+    SDL_Rect paddle {(int)paddle_pos.x,
+        ((int)paddle_pos.y) - static_cast<int>(PADDLE_HEIGHT / 2),
+        THICKNESS,
+        static_cast<int>(PADDLE_HEIGHT)
+    };
+    
+    SDL_RenderFillRect(renderer.get(), &paddle);    // draw the paddle
+    
+    
+    
     
     
     SDL_RenderPresent(renderer.get());

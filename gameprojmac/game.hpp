@@ -12,6 +12,10 @@
 #include <SDL2/SDL.h>
 #include <memory>
 
+struct V2 {
+    float x;
+    float y;
+};
 class Game {
 public:
     Game();
@@ -28,6 +32,8 @@ private:
 private:
     std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)> window;
     std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> renderer;
+    V2 paddle_pos;
+    V2 ball_pos;
     
     bool is_running;
     
